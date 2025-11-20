@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DINDIA - Distribution Musicale Gratuite | 85% pour l'Artiste</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary: #1a1a2e;
+            --primary-light: #16213e;
+            --secondary: #0f9675;
+            --secondary-light: #14b88c;
+            --accent: #e94560;
+            --dark: #222222;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --success: #28a745;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(15, 150, 117, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: #ff6b81;
+            box-shadow: 0 7px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: white;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><path fill="white" d="M500,150 C700,50 900,150 900,350 C900,550 700,650 500,550 C300,650 100,550 100,350 C100,150 300,50 500,150 Z"/></svg>') center/cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        /* Revenue Section */
+        .revenue {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .revenue-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .revenue h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .revenue p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .revenue-split {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+
+        .revenue-artist, .revenue-platform {
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin: 0 20px;
+            min-width: 200px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .revenue-artist {
+            background: white;
+            color: var(--dark);
+            transform: scale(1.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .revenue-platform {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .percentage {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .revenue-artist .percentage {
+            color: var(--secondary);
+        }
+
+        .label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* How It Works Section */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .step-number {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* Distribution Section */
+        .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .platform {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px 20px;
+            box-shadow: var(--box-shadow);
+            width: 160px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .platform:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .platform-logo {
+            height: 60px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .platform-logo img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        /* Payment Methods Section */
+        .payment-methods {
+            background-color: var(--gray-light);
+        }
+
+        .payment-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .payment-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            width: 280px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .payment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .payment-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .payment-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .faq-question {
+            padding: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--secondary);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(15, 150, 117, 0.2);
+        }
+
+        .auth-divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--gray-light);
+        }
+
+        .auth-divider span {
+            background-color: white;
+            padding: 0 15px;
+            color: var(--gray);
+        }
+
+        .btn-google {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            background-color: white;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-google:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-google img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-switch a {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
+            
+            .steps {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+            
+            .revenue-split {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .revenue-artist, .revenue-platform {
+                margin: 0;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .revenue-artist {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .payment-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <span class="logo-icon">🎵</span>
+                    DINDIA
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#revenue">Revenus</a></li>
+                    <li><a href="#how-it-works">Comment ça marche</a></li>
+                    <li><a href="#distribution">Plateformes</a></li>
+                    <li><a href="#payment">Paiements</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-outline" id="login-btn">Connexion</a>
+                    <a href="#" class="btn" id="signup-btn">Inscription</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Distribuez votre musique gratuitement avec <span>DINDIA</span></h1>
+                <p>La première plateforme de distribution musicale 100% gratuite qui reverse 85% des revenus directement aux artistes.</p>
+                
+                <div class="hero-badges">
+                    <div class="badge">🎵 100% Gratuit</div>
+                    <div class="badge">💰 85% pour l'artiste</div>
+                    <div class="badge">🌍 Distribution mondiale</div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-secondary" id="hero-signup">Commencer maintenant</a>
+                    <a href="#" class="btn btn-outline">Découvrir comment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pourquoi choisir DINDIA?</h2>
+                <p>Nous révolutionnons l'industrie musicale en mettant les artistes au premier plan.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💸</div>
+                    <h3>Zéro frais, 85% de revenus</h3>
+                    <p>Distribuez votre musique sans frais et recevez 85% de tous vos revenus générés.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌎</div>
+                    <h3>Distribution mondiale</h3>
+                    <p>Votre musique disponible sur Spotify, Apple Music, Deezer et 150+ plateformes dans le monde entier.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analyses détaillées</h3>
+                    <p>Suivez vos performances avec nos tableaux de bord en temps réel et des rapports détaillés.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Publication rapide</h3>
+                    <p>Votre musique en ligne en 48h sur la plupart des plateformes. Planifiez vos sorties à l'avance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Droits conservés</h3>
+                    <p>Vous conservez 100% de vos droits d'auteur. Nous ne revendiquons aucune propriété sur votre musique.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎛️</div>
+                    <h3>Outils promotionnels</h3>
+                    <p>Accédez à des outils exclusifs pour promouvoir votre musique et développer votre audience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue Section -->
+    <section id="revenue" class="revenue">
+        <div class="container">
+            <div class="revenue-content">
+                <h2>Notre modèle de revenus équitable</h2>
+                <p>Contrairement aux autres plateformes qui prennent jusqu'à 30% de vos revenus, nous reversons 85% directement aux artistes.</p>
+                
+                <div class="revenue-split">
+                    <div class="revenue-artist">
+                        <div class="percentage">85%</div>
+                        <div class="label">Pour l'artiste</div>
+                    </div>
+                    <div class="revenue-platform">
+                        <div class="percentage">15%</div>
+                        <div class="label">Pour DINDIA</div>
+                    </div>
+                </div>
+                
+                <p>Nous ne prélevons que 15% pour couvrir nos frais opérationnels et continuer à améliorer la plateforme.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comment ça marche</h2>
+                <p>En seulement 3 étapes simples, votre musique sera disponible dans le monde entier.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Créez votre compte</h3>
+                    <p>Inscrivez-vous gratuitement en 2 minutes et complétez votre profil d'artiste.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Téléchargez votre musique</h3>
+                    <p>Ajoutez vos morceaux, covers arts, métadonnées et choisissez vos plateformes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Nous distribuons</h3>
+                    <p>Nous publions votre musique et vous recevez 85% de tous les revenus générés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Distribution Platforms Section -->
+    <section id="distribution">
+        <div class="container">
+            <div class="section-title">
+                <h2>Plateformes de distribution</h2>
+                <p>Votre musique disponible sur toutes les principales plateformes de streaming et de téléchargement.</p>
+            </div>
+            <div class="platforms">
+                <div class="platform">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png" alt="Spotify">
+                    </div>
+                    <h4>Spotify</h4>
+                </div>
+                <div class="platform">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/1024px-Apple_Music_icon.svg.png" alt="Apple Music">
+                    </div>
+                    <h4>Apple Music</h4>
+                </div>
+                <div class="platform">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Youtube_Music_icon.svg/1024px-Youtube_Music_icon.svg.png" alt="YouTube Music">
+                    </div>
+                    <h4>YouTube Music</h4>
+                </div>
+                <div class="platform">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Deezer_logo.svg/1024px-Deezer_logo.svg.png" alt="Deezer">
+                    </div>
+                    <h4>Deezer</h4>
+                </div>
+                <div class="platform">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tidal_logo.svg/1024px-Tidal_logo.svg.png" alt="Tidal">
+                    </div>
+                    <h4>Tidal</h4>
+                </div>
+                <div class="platform">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Amazon_Music_logo.svg/1024px-Amazon_Music_logo.svg.png" alt="Amazon Music">
+                    </div>
+                    <h4>Amazon Music</h4>
+                </div>
+                <div class="platform">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Soundcloud_logo.svg/1024px-Soundcloud_logo.svg.png" alt="SoundCloud">
+                    </div>
+                    <h4>SoundCloud</h4>
+                </div>
+                <div class="platform">
+                    <div class="platform-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/iHeartRadio_logo.svg/1024px-iHeartRadio_logo.svg.png" alt="iHeartRadio">
+                    </div>
+                    <h4>iHeartRadio</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section id="payment" class="payment-methods">
+        <div class="container">
+            <div class="section-title">
+                <h2>Modes de paiement</h2>
+                <p>Recevez vos revenus facilement grâce à nos solutions de paiement adaptées.</p>
+            </div>
+            <div class="payment-cards">
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Money</h3>
+                    <p>Recevez vos paiements directement sur votre compte Mobile Money au Congo Brazzaville et dans toute l'Afrique.</p>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Virement bancaire</h3>
+                    <p>Virements internationaux vers votre compte bancaire partout dans le monde. Frais réduits pour l'Afrique.</p>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <h3>PayPal</h3>
+                    <p>Recevez vos revenus sur votre compte PayPal pour une gestion facile et rapide de vos fonds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Questions fréquentes</h2>
+                <p>Retrouvez les réponses aux questions les plus courantes sur notre service.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Comment DINDIA peut-il être gratuit?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nous générons des revenus grâce à une petite commission sur les ventes et streams de votre musique (15%), ce qui nous permet d'offrir le service gratuitement tout en vous reversant 85% de vos revenus. Notre modèle économique est transparent et équitable.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quand et comment suis-je payé?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Les paiements sont effectués trimestriellement, dès que vous atteignez le seuil de 20€. Vous pouvez recevoir vos revenus par virement bancaire, PayPal ou carte prépayée. Tous les détails de vos revenus sont disponibles en temps réel dans votre tableau de bord.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Combien de temps faut-il pour que ma musique soit en ligne?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>La plupart des plateformes mettent votre musique en ligne dans les 1 à 3 jours ouvrables. Certaines plateformes peuvent prendre jusqu'à 2 semaines. Nous vous recommandons de soumettre votre musique au moins 3 semaines avant la date de sortie souhaitée pour une publication optimale.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Puis-je retirer ma musique des plateformes?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, vous pouvez retirer votre musique à tout moment depuis votre tableau de bord. Le processus de retrait prend généralement 1 à 2 semaines selon les plateformes. Vous conservez tous vos droits et revenus jusqu'au moment du retrait effectif.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Y a-t-il des limites au nombre de morceaux que je peux distribuer?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Non, vous pouvez distribuer un nombre illimité de morceaux, singles et albums sans frais supplémentaires. Que vous soyez un artiste émergent avec un single ou un artiste établi avec un catalogue complet, DINDIA s'adapte à vos besoins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Prêt à diffuser votre musique dans le monde entier?</h2>
+            <p>Rejoignez des milliers d'artistes qui ont déjà choisi DINDIA pour distribuer leur musique gratuitement et garder 85% de leurs revenus.</p>
+            <a href="#" class="btn btn-secondary" id="cta-signup">Commencer gratuitement</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DINDIA</h3>
+                    <p>La plateforme de distribution musicale gratuite qui donne 85% des revenus aux artistes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Fonctionnalités</a></li>
+                        <li><a href="#revenue">Revenus</a></li>
+                        <li><a href="#how-it-works">Comment ça marche</a></li>
+                        <li><a href="#distribution">Plateformes</a></li>
+                        <li><a href="#payment">Paiements</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Légal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Politique des cookies</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li>Email: support@dindia.com</li>
+                        <li>Téléphone: +33 1 23 45 67 89</li>
+                        <li>Adresse: 123 Rue de la Musique, Paris</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DINDIA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Connexion à DINDIA</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Adresse email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mot de passe</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Se connecter</button>
+            </form>
+            <div class="auth-divider">
+                <span>Ou</span>
+            </div>
+            <button class="btn-google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" alt="Google">
+                Se connecter avec Google
+            </button>
+            <div class="auth-switch">
+                <p>Pas encore de compte? <a href="#" id="switch-to-signup">S'inscrire</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Inscription à DINDIA</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Nom d'artiste</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Adresse email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Mot de passe</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-country">Pays</label>
+                    <input type="text" id="signup-country" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Créer un compte</button>
+            </form>
+            <div class="auth-divider">
+                <span>Ou</span>
+            </div>
+            <button class="btn-google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" alt="Google">
+                S'inscrire avec Google
+            </button>
+            <div class="auth-switch">
+                <p>Déjà un compte? <a href="#" id="switch-to-login">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const heroSignup = document.getElementById('hero-signup');
+        const ctaSignup = document.getElementById('cta-signup');
+        const loginModal = document.getElementById('login-modal');
+        const signupModal = document.getElementById('signup-modal');
+        const closeModal = document.querySelectorAll('.close-modal');
+        const switchToSignup = document.getElementById('switch-to-signup');
+        const switchToLogin = document.getElementById('switch-to-login');
+
+        // Open modals
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        signupBtn.addEventListener('click', () => {
+            signupModal.style.display = 'flex';
+        });
+
+        heroSignup.addEventListener('click', () => {
+            signupModal.style.display = 'flex';
+        });
+
+        ctaSignup.addEventListener('click', () => {
+            signupModal.style.display = 'flex';
+        });
+
+        // Close modals
+        closeModal.forEach(btn => {
+            btn.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+                signupModal.style.display = 'none';
+            });
+        });
+
+        // Switch between modals
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            signupModal.style.display = 'flex';
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'none';
+            loginModal.style.display = 'flex';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === signupModal) {
+                signupModal.style.display = 'none';
+            }
+        });
+
+        // Form submission
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Fonctionnalité de démonstration - Connexion réussie!');
+            loginModal.style.display = 'none';
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Fonctionnalité de démonstration - Inscription réussie! Bienvenue sur DINDIA!');
+            signupModal.style.display = 'none';
+        });
+
+        // Google auth buttons
+        document.querySelectorAll('.btn-google').forEach(btn => {
+            btn.addEventListener('click', () => {
+                alert('Fonctionnalité de démonstration - Connexion avec Google');
+            });
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(26, 26, 46, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.backgroundColor = 'var(--primary)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
